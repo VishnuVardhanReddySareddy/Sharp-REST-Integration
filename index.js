@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://crudcrud.com/api/0a86411f72104759a507b5aec7969c21/products";
+  "https://crudcrud.com/api/3a12fbc554c847eb8491b97a1713eb83/products";
 
 window.addEventListener("DOMContentLoaded", () => {
   axios

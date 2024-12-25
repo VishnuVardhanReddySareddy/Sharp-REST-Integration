@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="/js/index.js"></script>
+  </head>
+  <body>
+    <form onsubmit="handleFormSubmit(event)">
+      <label for="price">Amount</label>
+      <input type="number" name="price" id="price" required />
+      <label for="product">Description</label>
+      <input type="text" name="product" id="product" required />
+      <label for="category">Choose a Category:</label>
+      <select id="category" name="category" required>
+        <option value="Electronic">Electronic</option>
+        <option value="Food">Food</option>
+        <option value="Skincare">Skincare</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <h1>Expenses</h1>
+    <ul id="Electronic">
+      <h3>Electronic Items</h3>
+    </ul>
+    <ul id="Food">
+      <h3>Food Items</h3>
+    </ul>
+    <ul id="Skincare">
+      <h3>Skincare Items</h3>
+    </ul>
+  </body>
+</html>
