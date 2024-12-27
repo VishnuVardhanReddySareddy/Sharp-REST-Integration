@@ -18,12 +18,27 @@ function handleFormSubmit(event) {
     category: event.target.category.value,
   };
 
-  axios
-    .post(BASE_URL, expenseDetails)
-    .then((response) => displayExpenseOnScreen(response.data))
-    .catch((error) => console.log(error));
+  const expenseId = event.target.dataset.id;
 
-  event.target.reset();
+  if (expenseId) {
+    // Update existing expense
+    axios
+      .put(`${BASE_URL}/${expenseId}`, expenseDetails)
+      .then((response) => {
+        document.querySelector(
+          `li[data-id="${expenseId}"]`
+        ).textContent = `${response.data.amount} - ${response.data.description} - ${response.data.category}`;
+        displayExpenseOnScreen(response.data);
+        clearForm();
+      })
+      .catch((error) => console.log(error));
+  } else {
+    // Add new expense
+    axios
+      .post(BASE_URL, expenseDetails)
+      .then((response) => displayExpenseOnScreen(response.data))
+      .catch((error) => console.log(error));
+  }
 }
 
 function displayExpenseOnScreen(expense) {
@@ -58,23 +73,16 @@ function displayExpenseOnScreen(expense) {
   });
 
   updateBtn.addEventListener("click", function () {
-    const newDetails = prompt(
-      "Enter new details (amount-description-category):"
-    ).split("-");
-    const updatedExpense = {
-      amount: newDetails[0],
-      description: newDetails[1],
-      category: newDetails[2],
-    };
-
-    const expenseId = expenseItem.getAttribute("data-id");
-    axios
-      .put(`${BASE_URL}/${expenseId}`, updatedExpense)
-      .then(() => {
-        expenseItem.textContent = `${updatedExpense.amount} - ${updatedExpense.description} - ${updatedExpense.category}`;
-        expenseItem.appendChild(deleteBtn);
-        expenseItem.appendChild(updateBtn);
-      })
-      .catch((error) => console.log(error));
+    document.getElementById("price").value = expense.amount;
+    document.getElementById("product").value = expense.description;
+    document.getElementById("category").value = expense.category;
+    document.querySelector("form").dataset.id = expense.id; 
   });
+}
+
+function clearForm() {
+  document.getElementById("price").value = "";
+  document.getElementById("product").value = "";
+  document.getElementById("category").value = "";
+  document.querySelector("form").removeAttribute("data-id"); 
 }

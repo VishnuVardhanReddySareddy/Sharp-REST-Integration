@@ -1,4 +1,4 @@
-// server.js
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const expenseRoutes = require('./routes/expenseRoutes');
@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));  // Serve static files
+app.use(express.static(path.join(__dirname, 'public'))); 
 app.use('/api', expenseRoutes);
 
 app.get('/', (req, res) => {

@@ -1,21 +1,37 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  form {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    margin-right: 10px;
-  }
-  
-  input, select {
-    margin-right: 10px;
-  }
-  
-  button {
-    margin-left: 10px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form label {
+  margin-right: 10px;
+}
+
+form input,
+form select,
+form button {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+form button {
+  cursor: pointer;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+ul li button {
+  margin-left: 10px;
+  cursor: pointer;
+}

@@ -1,7 +1,5 @@
-// controllers/expenseController.js
-const Expense = require('../models/expense');
+const Expense = require("../models/expense");
 
-// Create Expense
 exports.createExpense = async (req, res) => {
   try {
     const { amount, description, category } = req.body;
@@ -12,7 +10,6 @@ exports.createExpense = async (req, res) => {
   }
 };
 
-// Get All Expenses
 exports.getAllExpenses = async (req, res) => {
   try {
     const expenses = await Expense.findAll();
@@ -22,7 +19,6 @@ exports.getAllExpenses = async (req, res) => {
   }
 };
 
-// Delete Expense
 exports.deleteExpense = async (req, res) => {
   try {
     const { id } = req.params;
@@ -33,13 +29,13 @@ exports.deleteExpense = async (req, res) => {
   }
 };
 
-// Update Expense (Bonus Task)
+
 exports.updateExpense = async (req, res) => {
   try {
     const { id } = req.params;
     const { amount, description, category } = req.body;
     await Expense.update({ amount, description, category }, { where: { id } });
-    res.status(200).json({ message: 'Expense updated successfully' });
+    res.status(200).json({ message: "Expense updated successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

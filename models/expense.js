@@ -1,4 +1,4 @@
-// models/expense.js
+
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("expense", "root", "Newyork@1234", {
   host: "localhost",
